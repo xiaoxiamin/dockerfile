@@ -1,7 +1,7 @@
 FROM centos:7.2.1511
-ADD http://sourceforge.net/projects/icinga-cn/files/icinga-cn/icinga-cn-1.9/icinga-cn-1.9.4.tar.bz2
-ADD http://sourceforge.net/projects/icinga-cn/files/icinga%20plugins/icinga-nrpe-2.14.tar.gz
-ADD http://assets.nagios.com/downloads/nagiosplugins/nagios-plugins-1.5.tar.gz
+ADD http://sourceforge.net/projects/icinga-cn/files/icinga-cn/icinga-cn-1.9/icinga-cn-1.9.4.tar.bz2 /tmp/
+ADD http://sourceforge.net/projects/icinga-cn/files/icinga%20plugins/icinga-nrpe-2.14.tar.gz /tmp/
+ADD http://assets.nagios.com/downloads/nagiosplugins/nagios-plugins-1.5.tar.gz /tmp/
 RUN  rm  -f /etc/yum.repos.d/* \
     && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
 	 && yum clean all && yum makecache \
