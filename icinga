@@ -3,10 +3,11 @@ ADD http://sourceforge.net/projects/icinga-cn/files/icinga-cn/icinga-cn-1.9/icin
 ADD http://sourceforge.net/projects/icinga-cn/files/icinga%20plugins/icinga-nrpe-2.14.tar.gz
 ADD http://assets.nagios.com/downloads/nagiosplugins/nagios-plugins-1.5.tar.gz
 RUN  rm  -f /etc/yum.repos.d/* \
-   && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
+    && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
 	 && yum clean all && yum makecache \
 RUN useradd icinga && echo "icinga" |paaswd --stdin icinga
 RUN cd /tmp \
+            && yum -y install httpd gcc gcc-c++ gd gd-devel glibc glibc-common libjpeg libjpeg-devel libpng libpng-devel net-snmp net-snmp-devel net-snmp-utils libdbi-devel libdbi libdbi-drivers libdbi-dbd-mysql \
 		&& cd icinga-cn-1.9 \
 		&& ./configure --with-command-group=icinga \
 		&& make all \
